@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/reset.css">
+    <link rel="stylesheet" href="/buyTicket.css">
+    <title>Document</title>
+</head>
+<body>
+    <main class="wrapper">
+        <section class="about-flight">
+            <div class="container">
+                <div class="about-flight__row">
+                    <div class="about-flight__navigation">
+                        <h2 class="title">Про рейс</h2>
+                        <a class="about-flight__link" href="/">⟸ На головну</a>
+                    </div>
+                    <hr>
+                    <div class="about-flight__body">
+                        <ul class="about-flight__list">
+                            <li><p class="text about-flight__text"><%= flight.start_location %></p></li>
+                            <li><p class="text about-flight__text"><%= flight.departure_time %></p></li>
+                            <li><p class="text about-flight__text">➜</p></li>
+                            <li><p class="text about-flight__text"><%= flight.end_location %></p></li>
+                            <li><p class="text about-flight__text"><%= flight.arrival_time %></p></li>
+                        </ul>
+                        <div class="about-flight__price">
+                            <h2 class="title">Ціна: <span class="text about-flight__text"><%= flight.price %></span></h2>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="purchase">
+            <div class="container">
+                <div class="purchase__row">
+                    <form class="purchase__form" method="post" action="">
+                        <label class="title purchase__title">Оформлення квитка</label>
+                        <div class="purchase__container">
+                            <label class="purchase__label" for="username" >
+                                Ім'я
+                                <br>
+                                <input class="purchase_input" type="text" name="username" id="username" placeholder="Тарас" required>
+                            </label>
+                            <label class="purchase__label" for="surname" >
+                                Прізвище
+                                <br>
+                                <input class="purchase_input" type="text" name="surname" id="surname" placeholder="Шевченко" required>
+                            </label>
+                            <label class="purchase__label" for="email">
+                                E-mail
+                                <br>
+                                <input class="purchase_input" type="email" name="email" id="email" placeholder="shevchenko@gmail.com" required>
+                            </label>
+                            <label class="purchase__label" for="tel">
+                                Телефон
+                                <br>
+                                <input class="purchase_input" type="tel" name="phone" value="+380" id="tel" required>
+                            </label>
+                        </div>
+                        <label class="purchase__label--inactive" for="">
+                            Місце в автобусі
+                            <br>
+                            <% if (flight.seat_number > 0) { %>
+                                <input class="purchase_input purchase_input--inactive" type="button" value="Вільна росзадка (місце: <%= flight.seat_number %>)" disabled>
+                            <% } else { %>
+                                <input class="purchase_input--inactive" type="button" value="Всі місця зайняті" disabled>
+                            <% } %>
+                        </label>
+                        <% if (flight.seat_number > 0) { %>
+                            <input class="purchase__button" type="submit" onclick="return confirmCancel()" value="До сплати: <%= flight.price %>">
+                        <% } else { %>
+                            <input class="purchase__button purchase__button--inactive" type="button" value="До сплати: <%= flight.price %>" disabled>
+                        <% } %>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+    <script>
+        function confirmCancel() {
+            let confirmed = confirm("Для підтвердження купівлі натисніть 'ОК':");
+            if (confirmed) {
+                return true;
+            } else {
+                return false;
+            };
+        };
+    </script>
+</body>
+</html>

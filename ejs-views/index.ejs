@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/reset.css">
+    <link rel="stylesheet" href="/index.css">
+    <title>Document</title>
+</head>
+<body>
+    <main class="wrapper">
+        <header class="header">
+            <nav class="navigation">
+                <section class="container">
+                    <div class="navigation__row">
+                        <div class="navigation__logo logo">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="70" height="70" viewBox="0 0 256 256"><path fill="white" d="M248 80v24a8 8 0 0 1-16 0V80a8 8 0 0 1 16 0ZM16 72a8 8 0 0 0-8 8v24a8 8 0 0 0 16 0V80a8 8 0 0 0-8-8Zm200-8v144a16 16 0 0 1-16 16h-24a16 16 0 0 1-16-16v-8H96v8a16 16 0 0 1-16 16H56a16 16 0 0 1-16-16V64a32 32 0 0 1 32-32h112a32 32 0 0 1 32 32Zm-112 84a12 12 0 1 0-12 12a12 12 0 0 0 12-12Zm72 0a12 12 0 1 0-12 12a12 12 0 0 0 12-12Zm24-76H56v40h144Z"/></svg>
+                        </div>
+                        <ul class="navigation__list">
+                            <li><a class="navigation__link" href="/">Головна</a></li>
+                            <li><a class="navigation__link" href="#buses">Автопарк</a></li>
+                            <li><a class="navigation__link" href="#schedule">Розклад руху</a></li>
+                            <li><a class="navigation__link" href="#footer">Контакти</a></li>
+                        </ul>
+                    </div>
+                </section>
+            </nav>
+            <section class="header__title">
+                <h1>Автовокзал</h1>
+                <p>м. Дніпро</p>
+            </section>
+        </header>
+        <section class="buses" id="buses">
+            <div class="container">
+                <div class="buses__row">
+                    <h2 class="buses_title">Автопарк</h2>
+                    <div class="buses_gallery">
+                        <% if (imagesURL.length) { %>
+                            <% imagesURL.forEach(({ image_url }) => { %>
+                                <div class="container_image">
+                                    <img src="<%= image_url %>" alt="image bus">
+                                </div>
+                            <% }) %>
+                        <% } %>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="schedule" id="schedule">
+            <div class="container">
+                <div class="schedule__row">
+                    <h2 class="schedule__title">Розклад руху</h2>
+                    <table class="schedule__table">
+                        <thead class="schedule__thead--dark">
+                            <tr>
+                                <th>Рейс</th>
+                                <th>Відправлення</th>
+                                <th>Прибуття</th>
+                                <th>Вільні місця</th>
+                                <th>Вартість</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% flights.forEach(({id, start_location, end_location, departure_time, arrival_time, seat_number, price}) => { %>
+                                <% let nameStyleClass %>
+                                <% if (id % 2 == 0) { %>
+                                    <% nameStyleClass = 'schedule__tbody--dark' %>
+                                <% } else { %>
+                                    <% nameStyleClass = 'schedule__tbody--light' %>
+                                <% } %>
+                                <tr class="<%= nameStyleClass %>">
+                                    <td><%= start_location %> -> <%= end_location %></td>
+                                    <td><%= departure_time %></td>
+                                    <td><%= arrival_time %></td>
+                                    <td><%= seat_number %></td>
+                                    <td>
+                                        <p class="schedule__price">
+                                            <%= price %> грн
+                                        </p>
+                                        <br>
+                                        <% if (seat_number > 0) { %>
+                                            <a class="schedule__link schedule__link--active" href="/BuyTicket/<%= id %>">
+                                                купити
+                                            </a>
+                                        <% } else { %>
+                                            <a class="schedule__link schedule__link--inactive">
+                                                купити
+                                            </a>
+                                        <% } %>
+                                    </td>
+                                </tr>
+                            <% }) %>                            
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+        <footer class="footer" id="footer">
+            <div class="container">
+                <h2 class="footer__title">Контакти</h2>
+                <div class="footer__row">
+                    <p class="footer__text"><span class="footer__text--bolt">Адреса:</span> вулиця Курчатова, 10, Дніпро, Дніпропетровська область, 49000</p>
+                    <p class="footer__text"><span class="footer__text--bolt">Години:</span> Відчинено цілодобово</p>
+                    <p class="footer__text"><span class="footer__text--bolt">Телефон:</span> 056 778 4090</p>
+                </div>
+                <hr>
+                <p class="footer__cop">© 1993-2023, Автовокзал м. Дніпро. Всі права захищені.</p>
+            </div>
+        </footer>
+    </main>
+</body>
+</html>

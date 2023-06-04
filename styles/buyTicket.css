@@ -1,0 +1,147 @@
+.wrapper {
+    width: 1440px;
+    max-height: 100%;
+    display: flex;
+    overflow: hidden;
+    flex-direction: column;
+    font-family: 'Poppins', sans-serif;
+    background-color: rgb(244, 244, 244);
+    font-family: 'Roboto', 'Helvetica Neue', 'Arial', sans-serif;
+}
+
+.container {
+    max-width: 938px;
+    margin: 0 auto;
+}
+
+.about-flight {
+    padding: 20px 0;
+    background-color: white;
+    box-shadow: 0px 0px 4px 0.1px rgba(0, 0, 0, 0.3);
+}
+
+.about-flight__navigation {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.about-flight__link {
+    text-decoration: none;
+    color: blue;
+}
+
+.about-flight__link:hover {
+    border-bottom: 1px solid blue;
+}
+
+.about-flight__row {
+    display: block;
+}
+
+.title {
+    font-size: 25px;
+    color: #000;
+}
+
+.about-flight__title--margin {
+    margin: 10px 0;
+}
+.about-flight__body {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 0 0 0;
+}
+
+.about-flight__list {
+    display: flex;
+}
+
+.about-flight__list li:not(:first-child) {
+    margin: 0 10px;
+}
+
+.text {
+    font-size: 19px;
+    color: #000;
+}
+
+.about-flight__text {
+}
+
+.about-flight__price {
+}
+
+/* purchase */
+
+.purchase__row {
+    background-color: #fff;
+    margin: 40px 0;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0px 0px 4px 0.1px rgba(0, 0, 0, 0.3);
+}
+
+.purchase__container {
+    display: flex;
+    justify-content: space-between;
+    margin: 20px 0 0 0;
+}
+
+.purchase__form {
+    display: flex;
+    flex-direction: column;
+}
+
+.purchase__title {
+}
+
+.purchase__label {
+    font-size: 14px;
+    color: gray;
+}
+.purchase__label--inactive {
+    margin: 20px 0 0 0;
+    color: black;
+}
+
+.purchase_input {
+    width: 190px;
+    padding: 10px;
+    margin: 7px 0 0 0;
+    font-size: 17px;
+    border-radius: 5px;
+    border: 1px solid rgb(187, 187, 187);
+}
+
+.purchase_input--inactive {
+    width: 250px;
+    text-align: center;
+}
+
+.purchase_input:focus, .purchase_input--inactive:hover{
+    box-shadow: 0px 0px 5px 0.5px rgba(0, 0, 0, 0.3);
+}
+
+.purchase__button {
+    align-self: center;
+    width: 200px;
+    margin: 20px 0 0 0;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #000;
+    background-color: rgb(234, 234, 234);
+}
+
+.purchase__button:hover {
+    background-color: rgb(204, 204, 204);
+}
+
+.purchase__button--inactive {
+    background-color: red;
+}
+
+.purchase__button--inactive:hover {
+    background-color: red;
+}
+
